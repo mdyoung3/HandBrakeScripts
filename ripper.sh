@@ -5,6 +5,8 @@
 # encode for playback on Roku or Chromcast
 
 MOUNT_PATH=/media/${USER}
+E="_e"
+S="_s"
 
 is_tv () {
   read -p "Is this tv [yn]" answer
@@ -75,8 +77,8 @@ line=$(awk 'NR=='"$i" dvdinfo)
 		echo "Crap"
 	else
 		echo "great"
-		title=$(echo $line | awk '{print $2}' | sed 's/^0*//' | tr -dc '[:alnum:]\n\r')
-		HandBrakeCLI -E copy:aac --input "${SOURCE}" --title "${title}" --output "${show_name}"/"${show_name}"_s"${season}"_e"${episode}".mp4 -e x264 -q "${quality}" -B 320;
+		title=$(echo "${line}" | awk '{print $2}' | sed 's/^0*//' | tr -dc '[:alnum:]\n\r')
+		HandBrakeCLI -E copy:aac --input "${SOURCE}" --title "${title}" --output "${show_name}${S}${season}${E}${episode}".mp4 -e x264 -q "${quality}" -B 320;
 		episode=$((episode+1))
 	fi
 
