@@ -1,6 +1,6 @@
 #!/bin/bash
 # 
-# Copyright (c) 2017 Marc Young
+# Copyright (c) 2019 Marc Young
 #
 # encode for playback on Roku or Chromcast
 
